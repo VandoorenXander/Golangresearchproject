@@ -3,8 +3,8 @@ FROM golang:1.17.6-alpine
 #workdir directory
 WORKDIR /go/src/researchproject/
 
-COPY go.mod ./
-COPY go.sum ./
+COPY . .
+
 #installing the packages needed for the project
 RUN go get github.com/galeone/tfgo
 RUN go get github.com/pkg/errors
