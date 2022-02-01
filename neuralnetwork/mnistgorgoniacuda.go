@@ -10,7 +10,6 @@ import (
 	"io"
 	"log"
 	"math/rand"
-	_ "net/http/pprof"
 	"os"
 	"os/signal"
 	"path/filepath"
@@ -21,7 +20,6 @@ import (
 	G "gorgonia.org/gorgonia"
 	nnops "gorgonia.org/gorgonia/ops/nn"
 	"gorgonia.org/tensor"
-
 	"time"
 
 	pb "gopkg.in/cheggaaa/pb.v1"
@@ -190,10 +188,6 @@ func main() {
 	var inputs, targets tensor.Tensor
 	var err error
 
-	// go func() {
-	// 	log.Println(http.ListenAndServe("localhost:6060", nil))
-	// }()
-
 	trainOn := *dataset
 	if inputs, targets, err = Load(trainOn, loc, dt); err != nil {
 		log.Fatal(err)
@@ -218,10 +212,6 @@ func main() {
 	var costVal, lossesVal G.Value
 	G.Read(losses, &lossesVal)
 	G.Read(cost, &costVal)
-
-	if _, err = G.Grad(cost, m.learnables()...); err != nil {
-		log.Fatalf("%+v", err)
-	}
 
 	vm := G.NewTapeMachine(g, G.BindDualValues())
 	solver := G.NewRMSPropSolver(G.WithBatchSize(float64(bs)), G.WithLearnRate(0.01))
