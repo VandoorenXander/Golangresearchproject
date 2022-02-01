@@ -31,7 +31,7 @@ var (
 	epochs     = flag.Int("epochs", 10, "Number of epochs to train for")
 	dataset    = flag.String("dataset", "train", "dataset to train train or test")
 	dtype      = flag.String("dtype", "float64", "Which dtype to use")
-	batchsize  = flag.Int("batchsize", 5, "Batch size")
+	batchsize  = flag.Int("batchsize", 128, "Batch size")
 	cpuprofile = flag.String("cpuprofile", "", "CPU profiling")
 )
 
