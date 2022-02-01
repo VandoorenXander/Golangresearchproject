@@ -6,7 +6,6 @@ WORKDIR /go/src/researchproject/
 COPY . .
 
 #installing the packages needed for the project
-RUN go get github.com/galeone/tfgo
 RUN go get github.com/pkg/errors
 RUN go get gopkg.in/cheggaaa/pb.v1
 RUN go get gorgonia.org/gorgonia
