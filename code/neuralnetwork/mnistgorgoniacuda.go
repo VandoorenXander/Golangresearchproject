@@ -27,7 +27,7 @@ import (
 
 var (
 	epochs     = flag.Int("epochs", 10, "Number of epochs to train for")
-	dataset    = flag.String("dataset", "train", "dataset to train train or test")
+	dataset    = flag.String("dataset", "test", "dataset to train train or test")
 	dtype      = flag.String("dtype", "float64", "Which dtype to use")
 	batchsize  = flag.Int("batchsize", 128, "Batch size")
 	cpuprofile = flag.String("cpuprofile", "", "CPU profiling")
@@ -94,7 +94,6 @@ func (m *convnet) learnables() G.Nodes {
 	return G.Nodes{m.w0, m.w1, m.w2, m.w3, m.w4}
 }
 
-// This function is particularly verbose for educational reasons. In reality, you'd wrap up the layers within a layer struct type and perform per-layer activations
 func (m *convnet) fwd(x *G.Node) (err error) {
 	var c0, c1, c2, fc *G.Node
 	var a0, a1, a2, a3 *G.Node

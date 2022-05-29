@@ -1,9 +1,5 @@
 #installing golang
 FROM golang:1.17.6-alpine 
-#workdir directory
-WORKDIR /go/src/researchproject/
-
-COPY . .
 
 #installing the packages needed for the project
 RUN go get github.com/pkg/errors
@@ -17,6 +13,7 @@ RUN go get github.com/go-gota/gota/dataframe
 RUN go get github.com/go-gota/gota/series
 RUN go get gonum.org/v1/gonum
 
-
-
+#workdir directory
+WORKDIR /code
+COPY ./code .
 
